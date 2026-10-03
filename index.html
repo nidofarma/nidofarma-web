@@ -171,8 +171,8 @@ h2{font-size:clamp(30px,3.8vw,46px)}
 .itinerario{padding:112px 0 104px;background:var(--crema)}
 .cabeza{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:end;margin-bottom:56px}
 .cabeza p{color:var(--tinta-2);max-width:32em}
-.recorrido{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;position:relative}
-.recorrido::before{content:"";position:absolute;left:0;right:12%;top:15px;border-top:1.5px dashed #BFC8BD}
+.recorrido{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;position:relative}
+.recorrido::before{display:none}
 .etapa{position:relative;padding-top:52px;display:flex;flex-direction:column;gap:10px}
 .etapa::before{content:"";position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--crema);border:1.5px solid #AEB9AD}
 .etapa.activa::before{background:var(--verde);border-color:var(--verde);box-shadow:inset 0 0 0 9px var(--verde),inset 0 0 0 16px var(--arena)}
@@ -354,7 +354,6 @@ details p{padding:0 0 22px;color:var(--tinta-2);max-width:40em}
   .itinerario,.ponente,.inscripcion,.preguntas-frec,.metodo{padding:72px 0}
   .inscripcion{border-radius:32px}
   .recorrido{grid-template-columns:1fr;gap:34px;padding-left:50px}
-  .recorrido::before{display:block;left:15px;right:auto;top:16px;bottom:120px;border-top:0;border-left:1.5px dashed #BFC8BD}
   .etapa{padding-top:0}
   .etapa::before{left:-50px}
   .etapa.propuesta{margin-left:-50px;margin-top:0}
@@ -386,7 +385,7 @@ details p{padding:0 0 22px;color:var(--tinta-2);max-width:40em}
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a href="#curso">El curso</a>
-      <a href="#itinerario">Itinerario</a>
+      <a href="#itinerario">Próximos cursos</a>
       <a href="#metodo">Cómo trabajamos</a>
       <a href="#ponentes">Ponente</a>
       <a href="#faq">Preguntas</a>
@@ -508,34 +507,20 @@ details p{padding:0 0 22px;color:var(--tinta-2);max-width:40em}
   <section class="itinerario" id="itinerario">
     <div class="wrap">
       <div class="cabeza">
-        <h2>El primer curso de un itinerario completo</h2>
-        <p>NidoFarma irá cubriendo toda la categoría materno-infantil, curso a curso. Si nos cuentas qué temas te interesan, te escribiremos cuando abramos inscripciones.</p>
+        <h2>Un curso completo, sin segunda parte</h2>
+        <p>El curso de lactancia, fórmulas y primeros cuidados cubre todo el temario con la profundidad necesaria para asesorar al máximo nivel en el mostrador. No habrá un nivel avanzado: lo que venga después en NidoFarma será sobre otros temas.</p>
       </div>
       <div class="recorrido">
         <article class="etapa activa">
           <span class="num">Curso 01</span>
           <h3>Lactancia, fórmulas y primeros cuidados</h3>
-          <p>20 y 21 de noviembre en Barcelona, con Marta Mor Puig.</p>
+          <p>20 y 21 de noviembre en Barcelona, con Marta Mor Puig. Formación completa en un solo curso.</p>
           <span class="estado">Inscripción abierta</span>
           <a class="enlace" href="#curso">Ver el curso</a>
         </article>
-        <article class="etapa proxima">
-          <span class="num">Curso 02</span>
-          <h3>Nuevo curso de la categoría materno-infantil</h3>
-          <p>Tema y fechas por anunciar. Barcelona.</p>
-          <span class="estado">Próximamente</span>
-          <a class="enlace" href="#avisos">Avisarme cuando se abra</a>
-        </article>
-        <article class="etapa proxima">
-          <span class="num">Curso 03</span>
-          <h3>Nuevo curso de la categoría materno-infantil</h3>
-          <p>Lo estamos diseñando a partir de lo que nos proponéis.</p>
-          <span class="estado">En preparación</span>
-          <a class="enlace" href="#avisos">Avisarme cuando se abra</a>
-        </article>
         <article class="etapa propuesta">
           <h3>¿Qué te gustaría aprender?</h3>
-          <p>Cuéntanos qué consultas te encuentras en la farmacia y lo tendremos en cuenta para los próximos cursos.</p>
+          <p>Cuéntanos qué consultas te encuentras en la farmacia y nos ayudarás a elegir el tema de los próximos cursos.</p>
           <a class="btn btn-verde" href="#contacto">Proponer un tema</a>
         </article>
       </div>
@@ -577,7 +562,7 @@ details p{padding:0 0 22px;color:var(--tinta-2);max-width:40em}
           <li>Miembro de <b>Lactafarma</b>, el grupo transversal de trabajo en lactancia materna de los colegios de farmacéuticos de Tarragona, Barcelona y Girona (COFT, COFB y COFGi).</li>
           <li>Colaboradora, a través del COFB, en la elaboración de la <b>Guia d’alimentació saludable en la primera infància</b> de l’Agència de Salut Pública de Catalunya.</li>
         </ul>
-        <p class="mas">Iremos incorporando especialistas para cada curso del itinerario.</p>
+        <p class="mas">En los próximos cursos contaremos con especialistas en cada tema.</p>
       </div>
     </div>
   </section>
@@ -742,7 +727,7 @@ details p{padding:0 0 22px;color:var(--tinta-2);max-width:40em}
         <details><summary>¿Da créditos de formación continuada?</summary><p>En esta primera edición no. Se entrega certificado de asistencia de NidoFarma.</p></details>
         <details><summary>¿Dónde se celebra?</summary><p>En Passeig de Sant Gervasi 8, entresòl 4, 08022 Barcelona.</p></details>
         <details><summary>¿Quién imparte el curso?</summary><p>Marta Mor Puig, farmacéutica cotitular de Farmàcia Rodríguez Mor, asesora de lactancia y miembro del grupo Lactafarma de los colegios de farmacéuticos de Catalunya.</p></details>
-        <details><summary>¿Habrá más cursos?</summary><p>Sí. El de lactancia es el primero de un itinerario que cubrirá toda la categoría materno-infantil.</p></details>
+        <details><summary>¿Habrá más cursos?</summary><p>Sí, pero sobre otros temas. El curso de lactancia, fórmulas y primeros cuidados es completo: no tendrá segunda parte ni nivel avanzado, porque ya te forma para asesorar al máximo nivel en el mostrador. El próximo curso tratará un tema distinto, que todavía estamos definiendo.</p></details>
       </div>
     </div>
   </section>
