@@ -13,7 +13,6 @@
 //   NIDO_SWIFT      SWIFT/BIC (opcional)
 
 const PRECIO_CURSO = 395;
-const PRECIO_MENU = 40;
 const CURSO = "Lactancia materna, leches de fórmula y primeros cuidados del bebé";
 const CUANDO = "el viernes 20 y el sábado 21 de noviembre";
 const DONDE = "Passeig de Sant Gervasi 8, entresòl 4, 08022 Barcelona";
@@ -45,18 +44,18 @@ function emailInscripcion(d) {
 
   // El importe se calcula aquí, no se toma del navegador.
   const conMenu = String(d["comida-viernes"] || "").toLowerCase().startsWith("sí");
-  const total = PRECIO_CURSO + (conMenu ? PRECIO_MENU : 0);
+  const total = PRECIO_CURSO; // la comida del viernes está incluida
   const nombre = String(d.nombre || "").trim();
   const concepto = `${nombre || "Asistente"} - Curso 01 NidoFarma`;
-  const desglose = conMenu ? `Curso ${euros(PRECIO_CURSO)} + menú del viernes ${euros(PRECIO_MENU)}` : `Curso ${euros(PRECIO_CURSO)}`;
+  const desglose = "Precio del curso, comida del viernes incluida";
   const n = pila(nombre);
 
   const fila = (k, v) =>
     `<tr><td style="padding:10px 0;border-top:1px solid #DED7CC;color:#6F7C73;font-size:14px">${k}</td><td style="padding:10px 0;border-top:1px solid #DED7CC;color:#2E4538;font-size:15px;font-weight:600;text-align:right">${v}</td></tr>`;
 
   const html = plantilla(`Gracias por inscribirte${n ? `, ${esc(n)}` : ""}`,
-    p(`Hemos recibido tu inscripción al curso <strong>${CURSO}</strong>, con Marta Mor Puig, ${CUANDO} en ${DONDE}.`) +
-    (conMenu ? p("Te hemos apuntado a la comida del viernes: un menú cerrado en un restaurante de la zona al que iremos todo el grupo junto. Os daremos los detalles en el curso.") : "") +
+    p(`Hemos recibido tu inscripción al curso <strong>${CURSO}</strong>, con Marta Mor Puig y Almudena Jiménez, ${CUANDO} en ${DONDE}.`) +
+    (conMenu ? p("Te esperamos también en la comida networking del viernes, incluida en el precio: iremos todo el grupo junto a un restaurante de la zona. Os daremos los detalles en el curso.") : "") +
     p("Tu plaza quedará reservada en cuanto recibamos la transferencia. Estos son los datos:") +
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-bottom:1px solid #DED7CC">
 ${fila("Titular", esc(titular))}${fila("IBAN", esc(iban))}${swift ? fila("SWIFT / BIC", esc(swift)) : ""}${fila("Concepto", esc(concepto))}${fila("Importe", euros(total))}
@@ -66,8 +65,8 @@ ${fila("Titular", esc(titular))}${fila("IBAN", esc(iban))}${swift ? fila("SWIFT 
 
   const text = [
     `Gracias por inscribirte${n ? `, ${n}` : ""}.`, "",
-    `Hemos recibido tu inscripción al curso ${CURSO}, con Marta Mor Puig, ${CUANDO} en ${DONDE}.`,
-    conMenu ? "Te hemos apuntado a la comida del viernes (menú cerrado en un restaurante de la zona, todo el grupo junto)." : null,
+    `Hemos recibido tu inscripción al curso ${CURSO}, con Marta Mor Puig y Almudena Jiménez, ${CUANDO} en ${DONDE}.`,
+    conMenu ? "Te esperamos también en la comida networking del viernes, incluida en el precio (todo el grupo junto en un restaurante de la zona)." : null,
     "", "Tu plaza quedará reservada en cuanto recibamos la transferencia:", "",
     `Titular: ${titular}`, `IBAN: ${iban}`, swift ? `SWIFT/BIC: ${swift}` : null,
     `Concepto: ${concepto}`, `Importe: ${euros(total)} (${desglose})`, "",
