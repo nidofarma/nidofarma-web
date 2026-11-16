@@ -116,6 +116,10 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
 .datos span{background:var(--salvia-velo);color:var(--verde);font-size:14.5px;font-weight:500;padding:6px 14px;border-radius:999px}
 .tarjeta{background:var(--blanco);border-radius:28px;padding:34px 34px 30px}
 .oculto{display:none}
+.si-no{display:none;background:var(--arena-velo);border-radius:14px;padding:14px 18px;font-size:15px;color:var(--tinta-2)}
+#formConfirmacion:has(input[name="asistencia"][value^="No"]:checked) .solo-si{display:none!important}
+#formConfirmacion:has(input[name="asistencia"][value^="No"]:checked) .si-no{display:block}
+#formConfirmacion:has(input[name="todos-los-turnos"][value^="No"]:checked) #turnos{display:flex}
 .turnos{display:flex;flex-direction:column;gap:8px;margin-top:4px}
 .turnos label{display:flex;gap:12px;align-items:center;font-size:15.5px;color:var(--tinta-2)}
 .turnos input{width:20px;height:20px;accent-color:var(--verde)}
@@ -151,6 +155,7 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
           <label class="opcion"><input type="radio" name="asistencia" value="Sí, confirmo mi asistencia" required><span>Sí, confirmo</span></label>
           <label class="opcion"><input type="radio" name="asistencia" value="No podré asistir"><span>No podré asistir</span></label>
         </div>
+        <p class="si-no" id="msgNo">¡Gracias por avisarnos! Solo necesitamos tu nombre, tu farmacia y tu email. Si quieres, cuéntanos algo más abajo.</p>
       </div>
     </div>
 
@@ -160,7 +165,7 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
       <div class="campo"><label for="c-nombre">Nombre y apellidos</label><input id="c-nombre" name="nombre" type="text" autocomplete="name" required></div>
       <div class="campos">
         <div class="campo"><label for="c-email">Email para comunicaciones</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="campo"><label for="c-tel">Teléfono para comunicaciones</label><input id="c-tel" name="telefono" type="tel" autocomplete="tel" required></div>
+        <div class="campo solo-si"><label for="c-tel">Teléfono para comunicaciones</label><input id="c-tel" name="telefono" type="tel" autocomplete="tel" data-req></div>
       </div>
     </div>
 
@@ -204,22 +209,27 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
 </div>
 <script>
 (function(){
-  var f=document.getElementById('formConfirmacion');
-  var logi=document.getElementById('bloqueLogistica');
-  var turnos=document.getElementById('turnos');
-  function req(on){ logi.querySelectorAll('input[data-req]').forEach(function(i){ i.required=on; }); }
+  var f=document.getElementById('formConfirmacion'); if(!f) return;
+  function marcado(n){ return f.querySelector('input[name="'+n+'"]:checked'); }
   function sync(){
-    var a=f.querySelector('input[name="asistencia"]:checked');
-    var no=a && a.value.indexOf('No')===0;
-    logi.style.display=no?'none':''; req(!no);
-    var t=f.querySelector('input[name="todos-los-turnos"]:checked');
-    turnos.classList.toggle('oculto',!(t && t.value.indexOf('No')===0) || no);
+    var a=marcado('asistencia'); var no=!!(a && a.value.indexOf('No')===0);
+    var bloques=f.querySelectorAll('.solo-si');
+    for(var k=0;k<bloques.length;k++){ bloques[k].style.display=no?'none':''; }
+    document.getElementById('msgNo').style.display=no?'block':'none';
+    var req=f.querySelectorAll('[data-req]');
+    for(var r=0;r<req.length;r++){ req[r].required=!no; }
+    var t=marcado('todos-los-turnos'); var turnos=document.getElementById('turnos');
+    turnos.style.display=(!no && t && t.value.indexOf('No')===0)?'flex':'none';
   }
-  f.addEventListener('change',sync); req(true); sync();
+  f.addEventListener('change',sync); f.addEventListener('click',function(){ setTimeout(sync,0); });
+  sync();
   f.addEventListener('submit',function(e){
-    var t=f.querySelector('input[name="todos-los-turnos"]:checked');
-    if(logi.style.display!=='none' && t && t.value.indexOf('No')===0 && !f.querySelector('input[name="turnos"]:checked')){
-      e.preventDefault(); alert('Marca a qué turnos vendrás.');
+    var a=marcado('asistencia'); var no=!!(a && a.value.indexOf('No')===0);
+    var t=marcado('todos-los-turnos');
+    if(!no && t && t.value.indexOf('No')===0 && !marcado('turnos')){
+      e.preventDefault(); var tu=document.getElementById('turnos');
+      tu.insertAdjacentHTML('beforeend','<p class="ayuda" style="color:#9B3B2E;margin:4px 0 0">Marca a qué turnos vendrás.</p>');
+      tu.scrollIntoView({block:'center'});
     }
   });
 })();
