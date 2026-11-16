@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Confirma tu asistencia · NidoFarma</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Confirma tu asistencia al curso de lactancia de NidoFarma, 20 y 21 de noviembre en Barcelona.">
+<meta property="og:title" content="Confirma tu asistencia · Curso de lactancia NidoFarma">
+<meta property="og:description" content="Viernes 20 y sábado 21 de noviembre · Barcelona. Te lleva un minuto.">
+<meta property="og:image" content="https://nidofarma.es/og.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='58' r='19' fill='%23D8CCBE'/%3E%3Cpath d='M9 48 A41 41 0 0 0 91 48' fill='none' stroke='%232E4538' stroke-width='11' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..600,0..100,0..1&family=Newsreader:opsz,wght@6..72,300&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+
+  /* marca */
+  --verde:#2E4538;
+  --verde-hondo:#233629;
+  --salvia-os:#6A7E70;
+  --salvia:#C8D2C6;
+  --salvia-velo:#E6EBE3;
+  --arena:#D8CCBE;
+  --arena-velo:#EFE9E1;
+  --crema:#F6F3EE;
+  --blanco:#FFFFFF;
+
+  /* texto y líneas */
+  --tinta:#1F2B25;
+  --tinta-2:#46544B;
+  --tinta-3:#6F7C73;
+  --linea:#DED7CC;
+  --linea-verde:#4A6353;
+  --sobre-verde:#C9D4C8;
+
+  /* tipografía */
+  --titulo:'Fraunces',Georgia,'Times New Roman',serif;
+  --texto:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--crema);color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--verde);outline-offset:3px;border-radius:4px}
+.sobre-verde :focus-visible{outline-color:var(--arena)}
+
+/* Solo los títulos principales van en Fraunces */
+h1,h2{font-family:var(--titulo);font-weight:360;font-variation-settings:"SOFT" 40,"WONK" 0;letter-spacing:-0.018em;line-height:1.08;margin:0;color:var(--verde);text-wrap:balance}
+h3{font-family:var(--texto);font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.005em;margin:0;color:var(--verde)}
+h2{font-size:clamp(30px,3.8vw,46px)}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.nota{font-size:15px;color:var(--tinta-3)}
+.lead{font-size:19px;line-height:1.6;color:var(--tinta-2);max-width:34em}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 28px;border-radius:999px;font-family:var(--texto);font-size:16px;font-weight:600;letter-spacing:.005em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn-verde{background:var(--verde);color:var(--crema)}
+.btn-verde:hover{background:var(--verde-hondo)}
+.btn-borde{border-color:var(--verde);color:var(--verde);background:transparent}
+.btn-borde:hover{background:var(--verde);color:var(--crema)}
+.btn-arena{background:var(--arena);color:var(--verde)}
+.btn-arena:hover{background:#CDBFAE}
+.btn-crema{background:var(--crema);color:var(--verde)}
+.btn-full{width:100%}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-txt{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:26px;line-height:1;letter-spacing:-0.02em}
+.logo-txt .n{font-weight:500;color:var(--verde)}
+.logo-txt .f{font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:.977em;color:var(--salvia-os)}
+.logo-txt .r{font-weight:300;color:var(--salvia-os)}
+.logo small{display:block;font-size:12px;color:var(--tinta-3);margin-top:5px;letter-spacing:.01em}
+.ayuda{font-size:14.5px;color:var(--tinta-3);margin:-2px 0 10px;line-height:1.5}
+.form{display:flex;flex-direction:column;gap:22px}
+.bloque-form{display:flex;flex-direction:column;gap:20px}
+.bloque-form + .bloque-form{padding-top:30px;border-top:1px solid var(--linea)}
+.bloque-form h3{font-size:17px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
+.campo{display:flex;flex-direction:column;gap:8px}
+.campo label,.campo .etq{font-size:15px;font-weight:500;color:var(--tinta-2)}
+.campo input,.campo textarea{width:100%;border:1.5px solid var(--linea);background:var(--crema);border-radius:14px;min-height:52px;padding:12px 16px;font-family:inherit;font-size:16px;color:var(--tinta);transition:border-color .15s,background-color .15s}
+.campo textarea{resize:vertical;min-height:96px}
+.campo input::placeholder,.campo textarea::placeholder{color:#9AA59D}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--verde);background:var(--blanco)}
+.opciones{display:flex;gap:8px;flex-wrap:wrap}
+.opcion{border:1.5px solid var(--linea);border-radius:999px;padding:10px 18px;font-size:15px;font-weight:500;color:var(--tinta-2);cursor:pointer;background:var(--blanco);font-family:inherit;min-height:44px;transition:background-color .15s,border-color .15s,color .15s}
+.opcion:hover{border-color:var(--salvia-os)}
+.opcion[aria-pressed="true"],.opcion:has(input:checked){background:var(--verde);color:var(--crema);border-color:var(--verde)}
+label.opcion{display:inline-flex;align-items:center;position:relative}
+label.opcion input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-offset:3px}
+.total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;background:var(--salvia-velo);border-radius:18px;padding:18px 22px}
+.total span{font-size:15px;color:var(--tinta-2)}
+.total small{display:block;font-size:13.5px;color:var(--tinta-3);margin-top:2px}
+.total b{font-size:30px;font-weight:600;letter-spacing:-0.03em;color:var(--verde);white-space:nowrap}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--tinta-3);line-height:1.5}
+.check input{margin-top:2px;width:20px;height:20px;flex:none;accent-color:var(--verde)}
+.aviso-form{display:none;background:var(--salvia-velo);border-radius:14px;padding:14px 18px;font-size:15px;color:var(--tinta-2)}
+.form .pie-form{font-size:14px;color:var(--tinta-3);text-align:center}
+/* página */
+.cab{padding:28px 0 0}
+.hoja{max-width:760px;margin:0 auto;padding:0 22px 72px}
+.intro{margin:40px 0 28px}
+.intro h1{font-size:clamp(34px,6vw,52px);font-weight:340;letter-spacing:-0.025em}
+.intro p{margin-top:16px;color:var(--tinta-2);font-size:18px}
+.datos{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.datos span{background:var(--salvia-velo);color:var(--verde);font-size:14.5px;font-weight:500;padding:6px 14px;border-radius:999px}
+.tarjeta{background:var(--blanco);border-radius:28px;padding:34px 34px 30px}
+.oculto{display:none}
+.turnos{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.turnos label{display:flex;gap:12px;align-items:center;font-size:15.5px;color:var(--tinta-2)}
+.turnos input{width:20px;height:20px;accent-color:var(--verde)}
+.pie{margin-top:28px;text-align:center;font-size:14px;color:var(--tinta-3)}
+.pie a{color:var(--verde);font-weight:600}
+@media (max-width:640px){.campos{grid-template-columns:1fr}.tarjeta{padding:26px 20px 24px;border-radius:22px}.intro{margin-top:28px}}
+</style>
+</head>
+<body>
+<div class="hoja">
+  <header class="cab">
+    <a class="logo" href="/" aria-label="NidoFarma">
+      <svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="58" r="19" fill="#D8CCBE"/><path d="M9 48 A41 41 0 0 0 91 48" fill="none" stroke="#2E4538" stroke-width="11" stroke-linecap="round"/></svg>
+      <span><span class="logo-txt"><span class="n">nido</span><span class="f">f</span><span class="r">arma</span></span><small>Formación para farmacéuticos</small></span>
+    </a>
+  </header>
+
+  <section class="intro">
+    <h1>Confirma tu asistencia</h1>
+    <p>Queda muy poco para el curso de lactancia. Rellena este formulario para que podamos prepararlo todo: te lleva un minuto.</p>
+    <div class="datos"><span>Viernes 20 y sábado 21 de noviembre</span><span>Passeig de Sant Gervasi 8, entresòl 4</span></div>
+  </section>
+
+  <div class="tarjeta">
+  <form class="form" id="formConfirmacion" name="confirmacion" method="POST" action="/gracias-confirmacion.html" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="confirmacion">
+    <p hidden><label>No rellenar: <input name="bot-field"></label></p>
+
+    <div class="bloque-form">
+      <div class="campo">
+        <span class="etq" id="lbl-asist">¿Confirmas tu asistencia al curso?</span>
+        <div class="opciones" role="radiogroup" aria-labelledby="lbl-asist">
+          <label class="opcion"><input type="radio" name="asistencia" value="Sí, confirmo mi asistencia" required><span>Sí, confirmo</span></label>
+          <label class="opcion"><input type="radio" name="asistencia" value="No podré asistir"><span>No podré asistir</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloque-form">
+      <h3>Tus datos</h3>
+      <div class="campo"><label for="c-farmacia">¿De qué farmacia vienes?</label><input id="c-farmacia" name="farmacia" type="text" required></div>
+      <div class="campo"><label for="c-nombre">Nombre y apellidos</label><input id="c-nombre" name="nombre" type="text" autocomplete="name" required></div>
+      <div class="campos">
+        <div class="campo"><label for="c-email">Email para comunicaciones</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="campo"><label for="c-tel">Teléfono para comunicaciones</label><input id="c-tel" name="telefono" type="tel" autocomplete="tel" required></div>
+      </div>
+    </div>
+
+    <div class="bloque-form solo-si" id="bloqueLogistica">
+      <h3>Logística</h3>
+      <div class="campo">
+        <span class="etq" id="lbl-turnos">¿Asistirás a todos los turnos?</span>
+        <p class="ayuda">Viernes por la mañana, viernes por la tarde y sábado por la mañana.</p>
+        <div class="opciones" role="radiogroup" aria-labelledby="lbl-turnos">
+          <label class="opcion"><input type="radio" name="todos-los-turnos" value="Sí, a todos" data-req><span>Sí, a todos</span></label>
+          <label class="opcion"><input type="radio" name="todos-los-turnos" value="No, solo a algunos"><span>No, solo a algunos</span></label>
+        </div>
+        <div class="turnos oculto" id="turnos">
+          <p class="ayuda" style="margin:6px 0 2px">¿A cuáles vendrás?</p>
+          <label><input type="checkbox" name="turnos" value="Viernes mañana"> Viernes por la mañana · Lactancia materna</label>
+          <label><input type="checkbox" name="turnos" value="Viernes tarde"> Viernes por la tarde · Primeros cuidados del bebé</label>
+          <label><input type="checkbox" name="turnos" value="Sábado mañana"> Sábado por la mañana · Leches de fórmula</label>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="etq" id="lbl-comida">¿Te quedarás a la comida del viernes?</span>
+        <p class="ayuda">Comida networking incluida en el precio. Comemos todo el grupo junto en un restaurante de la zona.</p>
+        <div class="opciones" role="radiogroup" aria-labelledby="lbl-comida">
+          <label class="opcion"><input type="radio" name="comida-viernes" value="Sí, me quedo a comer" data-req><span>Sí, me quedo</span></label>
+          <label class="opcion"><input type="radio" name="comida-viernes" value="No me quedo a comer"><span>No</span></label>
+        </div>
+      </div>
+      <div class="campo"><label for="c-intol">¿Alguna alergia o intolerancia alimentaria?</label><input id="c-intol" name="intolerancias" type="text" placeholder="Indícala o escribe «ninguna»"></div>
+    </div>
+
+    <div class="bloque-form">
+      <div class="campo"><label for="c-dudas">¿Tienes alguna duda?</label><textarea id="c-dudas" name="dudas" rows="3" placeholder="Sobre el curso, la sede, el horario…"></textarea></div>
+    </div>
+
+    <label class="check"><input type="checkbox" name="privacidad" required> <span>Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>. Responsable: Marta Mor Puig. Finalidad: organizar el curso y enviarte las comunicaciones sobre él.</span></label>
+    <button class="btn btn-verde btn-full" type="submit">Enviar confirmación</button>
+    <p class="pie-form">Al enviarla recibirás un email con el resumen de tus respuestas.</p>
+  </form>
+  </div>
+  <p class="pie">¿Algún problema? Escríbenos a <a href="mailto:reservas@nidofarma.es">reservas@nidofarma.es</a></p>
+</div>
+<script>
+(function(){
+  var f=document.getElementById('formConfirmacion');
+  var logi=document.getElementById('bloqueLogistica');
+  var turnos=document.getElementById('turnos');
+  function req(on){ logi.querySelectorAll('input[data-req]').forEach(function(i){ i.required=on; }); }
+  function sync(){
+    var a=f.querySelector('input[name="asistencia"]:checked');
+    var no=a && a.value.indexOf('No')===0;
+    logi.style.display=no?'none':''; req(!no);
+    var t=f.querySelector('input[name="todos-los-turnos"]:checked');
+    turnos.classList.toggle('oculto',!(t && t.value.indexOf('No')===0) || no);
+  }
+  f.addEventListener('change',sync); req(true); sync();
+  f.addEventListener('submit',function(e){
+    var t=f.querySelector('input[name="todos-los-turnos"]:checked');
+    if(logi.style.display!=='none' && t && t.value.indexOf('No')===0 && !f.querySelector('input[name="turnos"]:checked')){
+      e.preventDefault(); alert('Marca a qué turnos vendrás.');
+    }
+  });
+})();
+</script>
+</body>
+</html>
