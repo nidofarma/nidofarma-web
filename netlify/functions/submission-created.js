@@ -4,6 +4,7 @@
 //   inscripcion -> confirmación con los datos de la transferencia (copia oculta a reservas@)
 //   contacto    -> acuse de recibo de la consulta
 //   avisos      -> confirmación de que le avisaremos de los próximos cursos
+//   confirmacion -> resumen de sus respuestas a quien confirma (copia oculta a reservas@)
 // Los avisos internos con todos los datos los manda Netlify (Forms > notificaciones).
 //
 // Variables de entorno (Netlify > Project configuration > Environment variables):
@@ -106,7 +107,33 @@ function emailAvisos() {
     subject: "Te avisaremos de los próximos cursos de NidoFarma", html, text };
 }
 
-const CONSTRUCTORES = { inscripcion: emailInscripcion, contacto: emailContacto, avisos: emailAvisos };
+function emailConfirmacion(d) {
+  const n = pila(d.nombre);
+  const viene = !String(d.asistencia || "").toLowerCase().startsWith("no");
+  const lista = (v) => Array.isArray(v) ? v.join(", ") : String(v ?? "");
+  const turnos = String(d["todos-los-turnos"] || "").toLowerCase().startsWith("no")
+    ? `Solo algunos: ${lista(d.turnos) || "sin indicar"}` : (d["todos-los-turnos"] || "");
+  const filas = [
+    ["Asistencia", d.asistencia], ["Farmacia", d.farmacia], ["Nombre", d.nombre],
+    ...(viene ? [["Turnos", turnos], ["Comida del viernes", d["comida-viernes"]], ["Alergias o intolerancias", d.intolerancias || "Ninguna"]] : []),
+    ["Email", d.email], ["Teléfono", d.telefono], ["Dudas", d.dudas || "—"],
+  ];
+  const fila = (k, v) =>
+    `<tr><td style="padding:10px 0;border-top:1px solid #DED7CC;color:#6F7C73;font-size:14px;vertical-align:top">${k}</td><td style="padding:10px 0 10px 16px;border-top:1px solid #DED7CC;color:#2E4538;font-size:15px;font-weight:600;text-align:right">${esc(v)}</td></tr>`;
+  const tabla = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-bottom:1px solid #DED7CC;margin:6px 0 22px">${filas.map(([k, v]) => fila(k, v)).join("")}</table>`;
+  const titulo = viene ? `¡Nos vemos muy pronto${n ? `, ${esc(n)}` : ""}!` : `Sentimos que no puedas venir${n ? `, ${esc(n)}` : ""}`;
+  const intro = viene
+    ? p(`Hemos recibido tu confirmación para el curso <strong>${CURSO}</strong>, ${CUANDO} en ${DONDE}.`)
+    : p("Hemos recibido tu respuesta. Si cambian tus planes, escríbenos y lo vemos.");
+  const html = plantilla(titulo, intro + p("Este es el resumen de lo que nos has enviado:") + tabla +
+    p(`Si quieres cambiar algo, responde a este email o escríbenos a ${enlace("reservas@nidofarma.es")}.`));
+  const text = [titulo.replace(/&[a-z#0-9]+;/g, ""), "", ...filas.map(([k, v]) => `${k}: ${v ?? ""}`), "",
+    "Si quieres cambiar algo, responde a este email o escribe a reservas@nidofarma.es.", "", "El equipo de NidoFarma"].join("\n");
+  return { from: "NidoFarma <reservas@nidofarma.es>", reply_to: "reservas@nidofarma.es", bcc: ["reservas@nidofarma.es"],
+    subject: viene ? `Confirmación de asistencia${d.nombre ? ` · ${String(d.nombre).trim()}` : ""}` : `No podrá asistir${d.nombre ? ` · ${String(d.nombre).trim()}` : ""}`, html, text };
+}
+
+const CONSTRUCTORES = { inscripcion: emailInscripcion, contacto: emailContacto, avisos: emailAvisos, confirmacion: emailConfirmacion };
 
 exports.handler = async (event) => {
   let payload;
