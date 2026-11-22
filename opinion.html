@@ -221,20 +221,15 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
     <!-- 4. Testimonio y datos -->
     <div class="bloque-form">
       <h3 class="paso"><b>4</b>Para terminar <span class="opc">(opcional)</span></h3>
-      <label class="check"><input type="checkbox" name="publicar" value="Sí, autorizo publicar mi opinión"> <span style="color:var(--tinta-2);font-size:15px">Me gustaría dejar una frase sobre el curso y <strong>autorizo a NidoFarma a publicarla</strong> en su web y redes junto a mi nombre y mi farmacia.</span></label>
+      <label class="check"><input type="checkbox" name="publicar" value="Sí, autorizo publicar mi opinión"> <span style="color:var(--tinta-2);font-size:15px">Me gustaría dejar una frase sobre el curso y <strong>autorizo a NidoFarma a publicarla</strong> en su web y redes, de forma anónima.</span></label>
       <div class="testimonio">
         <div class="campo"><label for="o-frase">Tu frase sobre el curso</label><textarea id="o-frase" name="testimonio" rows="3" placeholder="En pocas palabras, ¿qué dirías del curso a otro farmacéutico?"></textarea></div>
-        <div class="campos">
-          <div class="campo"><label for="o-nombre">Nombre y apellidos</label><input id="o-nombre" name="nombre" type="text" autocomplete="name"></div>
-          <div class="campo"><label for="o-farmacia">Farmacia</label><input id="o-farmacia" name="farmacia" type="text"></div>
-        </div>
       </div>
-      <label class="check oculto" id="checkPriv"><input type="checkbox" name="privacidad"> <span>Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>. Finalidad: valorar el curso y publicar tu testimonio.</span></label>
     </div>
 
     <p class="aviso-form" id="avisoForm"></p>
     <button class="btn btn-verde btn-full" type="submit">Enviar mi opinión</button>
-    <p class="pie-form">Si no nos dejas tus datos, tu opinión es anónima.</p>
+    <p class="pie-form">Tus respuestas son anónimas.</p>
   </form>
   </div>
   <p class="pie">¿Prefieres contárnoslo directamente? Escríbenos a <a href="mailto:info@nidofarma.es">info@nidofarma.es</a></p>
@@ -243,15 +238,10 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
 (function(){
   var f=document.getElementById('formOpinion'); if(!f) return;
 
-  // Privacidad solo si deja datos personales
-  var priv=document.getElementById('checkPriv'), privIn=priv.querySelector('input');
+  // La frase es obligatoria solo si marcan que quieren dejarla
   var pub=f.querySelector('input[name="publicar"]');
-  function sync(){
-    var datos=pub.checked;
-    priv.classList.toggle('oculto',!datos); privIn.required=datos;
-    f.nombre.required=pub.checked; f.farmacia.required=pub.checked; f.testimonio.required=pub.checked;
-  }
-  f.addEventListener('input',sync); f.addEventListener('change',sync); sync();
+  function sync(){ f.testimonio.required=pub.checked; }
+  f.addEventListener('change',sync); sync();
 
   // Aviso amable si falta una de las dos notas obligatorias
   f.addEventListener('submit',function(e){
