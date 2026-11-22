@@ -229,11 +229,7 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
           <div class="campo"><label for="o-farmacia">Farmacia</label><input id="o-farmacia" name="farmacia" type="text"></div>
         </div>
       </div>
-      <div class="campo">
-        <label for="o-email">Tu email <span class="opc">· si quieres que te avisemos de los próximos cursos</span></label>
-        <input id="o-email" name="email" type="email" autocomplete="email">
-      </div>
-      <label class="check oculto" id="checkPriv"><input type="checkbox" name="privacidad"> <span>Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>. Finalidad: valorar el curso, publicar el testimonio si lo autorizas y avisarte de próximas formaciones.</span></label>
+      <label class="check oculto" id="checkPriv"><input type="checkbox" name="privacidad"> <span>Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>. Finalidad: valorar el curso y publicar tu testimonio.</span></label>
     </div>
 
     <p class="aviso-form" id="avisoForm"></p>
@@ -251,7 +247,7 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
   var priv=document.getElementById('checkPriv'), privIn=priv.querySelector('input');
   var pub=f.querySelector('input[name="publicar"]');
   function sync(){
-    var datos=pub.checked || f.email.value.trim()!=='' || f.nombre.value.trim()!=='';
+    var datos=pub.checked;
     priv.classList.toggle('oculto',!datos); privIn.required=datos;
     f.nombre.required=pub.checked; f.farmacia.required=pub.checked; f.testimonio.required=pub.checked;
   }
