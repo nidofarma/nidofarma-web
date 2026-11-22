@@ -146,6 +146,8 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
 .oculto{display:none}
 .testimonio{display:none;flex-direction:column;gap:20px;padding:18px;border-radius:18px;background:var(--salvia-velo)}
 #formOpinion:has(input[name="publicar"]:checked) .testimonio{display:flex}
+.whatsapp{display:none;flex-direction:column;gap:20px;padding:18px;border-radius:18px;background:var(--salvia-velo)}
+#formOpinion:has(input[name="whatsapp"]:checked) .whatsapp{display:flex}
 .error{color:#9B3B2E;font-size:14px;margin:4px 0 0}
 @media (max-width:640px){
   .campos{grid-template-columns:1fr}
@@ -225,11 +227,20 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
       <div class="testimonio">
         <div class="campo"><label for="o-frase">Tu frase sobre el curso</label><textarea id="o-frase" name="testimonio" rows="3" placeholder="En pocas palabras, ¿qué dirías del curso a otro farmacéutico?"></textarea></div>
       </div>
+      <label class="check"><input type="checkbox" name="whatsapp" value="Sí, quiero unirme al grupo de WhatsApp"> <span style="color:var(--tinta-2);font-size:15px">¿Quieres formar parte de nuestro <strong>grupo de WhatsApp</strong>?</span></label>
+      <div class="whatsapp">
+        <div class="campo"><label for="w-nombre">Nombre y apellidos</label><input id="w-nombre" name="nombre" type="text" autocomplete="name"></div>
+        <div class="campos">
+          <div class="campo"><label for="w-farmacia">Nombre de la farmacia</label><input id="w-farmacia" name="farmacia" type="text"></div>
+          <div class="campo"><label for="w-movil">Teléfono móvil</label><input id="w-movil" name="movil" type="tel" autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <label class="check"><input type="checkbox" name="privacidad"> <span>Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>. Finalidad: añadirte al grupo de WhatsApp de NidoFarma.</span></label>
+      </div>
     </div>
 
     <p class="aviso-form" id="avisoForm"></p>
     <button class="btn btn-verde btn-full" type="submit">Enviar mi opinión</button>
-    <p class="pie-form">Tus respuestas son anónimas.</p>
+    <p class="pie-form">Tus respuestas son anónimas, salvo que nos dejes tus datos para el grupo de WhatsApp.</p>
   </form>
   </div>
   <p class="pie">¿Prefieres contárnoslo directamente? Escríbenos a <a href="mailto:info@nidofarma.es">info@nidofarma.es</a></p>
@@ -238,9 +249,13 @@ label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-off
 (function(){
   var f=document.getElementById('formOpinion'); if(!f) return;
 
-  // La frase es obligatoria solo si marcan que quieren dejarla
+  // Campos obligatorios solo si marcan la reseña o el grupo de WhatsApp
   var pub=f.querySelector('input[name="publicar"]');
-  function sync(){ f.testimonio.required=pub.checked; }
+  var wa=f.querySelector('input[name="whatsapp"]');
+  function sync(){
+    f.testimonio.required=pub.checked;
+    f.nombre.required=wa.checked; f.farmacia.required=wa.checked; f.movil.required=wa.checked; f.privacidad.required=wa.checked;
+  }
   f.addEventListener('change',sync); sync();
 
   // Aviso amable si falta una de las dos notas obligatorias
