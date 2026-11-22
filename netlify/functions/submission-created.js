@@ -5,6 +5,7 @@
 //   contacto    -> acuse de recibo de la consulta
 //   avisos      -> confirmación de que le avisaremos de los próximos cursos
 //   confirmacion -> resumen de sus respuestas a quien confirma (copia oculta a reservas@)
+//   opinion     -> agradecimiento, solo si ha dejado su email (es opcional)
 // Los avisos internos con todos los datos los manda Netlify (Forms > notificaciones).
 //
 // Variables de entorno (Netlify > Project configuration > Environment variables):
@@ -133,7 +134,18 @@ function emailConfirmacion(d) {
     subject: viene ? `Confirmación de asistencia${d.nombre ? ` · ${String(d.nombre).trim()}` : ""}` : `No podrá asistir${d.nombre ? ` · ${String(d.nombre).trim()}` : ""}`, html, text };
 }
 
-const CONSTRUCTORES = { inscripcion: emailInscripcion, contacto: emailContacto, avisos: emailAvisos, confirmacion: emailConfirmacion };
+function emailOpinion(d) {
+  const n = pila(d.nombre);
+  const html = plantilla(`Gracias por tu opinión${n ? `, ${esc(n)}` : ""}`,
+    p("Hemos recibido tus respuestas sobre el Curso de Especialización en Materno Infantil. Las leeremos con calma: nos ayudan muchísimo a mejorar y a decidir las próximas formaciones.") +
+    p("Te avisaremos por email cuando abramos inscripciones de un nuevo curso. Si en algún momento prefieres no recibir más emails, responde a este con la palabra «baja».") +
+    p("Gracias de nuevo por acompañarnos en esta primera edición."));
+  const text = `Gracias por tu opinión${n ? `, ${n}` : ""}.\n\nHemos recibido tus respuestas sobre el Curso de Especialización en Materno Infantil. Nos ayudan muchísimo a mejorar y a decidir las próximas formaciones.\n\nTe avisaremos por email cuando abramos inscripciones de un nuevo curso. Si prefieres no recibir más emails, responde a este con la palabra «baja».\n\nEl equipo de NidoFarma`;
+  return { from: "NidoFarma <info@nidofarma.es>", reply_to: "info@nidofarma.es",
+    subject: "Gracias por tu opinión sobre el curso de NidoFarma", html, text };
+}
+
+const CONSTRUCTORES = { inscripcion: emailInscripcion, contacto: emailContacto, avisos: emailAvisos, confirmacion: emailConfirmacion, opinion: emailOpinion };
 
 exports.handler = async (event) => {
   let payload;
