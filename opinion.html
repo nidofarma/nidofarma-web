@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tu opinión sobre el curso · NidoFarma</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Cuéntanos qué te ha parecido el Curso de Especialización en Materno Infantil de NidoFarma.">
+<meta property="og:title" content="¿Qué te ha parecido el curso? · NidoFarma">
+<meta property="og:description" content="3 minutos para ayudarnos a mejorar las próximas formaciones.">
+<meta property="og:image" content="https://nidofarma.es/og.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='58' r='19' fill='%23D8CCBE'/%3E%3Cpath d='M9 48 A41 41 0 0 0 91 48' fill='none' stroke='%232E4538' stroke-width='11' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..600,0..100,0..1&family=Newsreader:opsz,wght@6..72,300&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+
+  /* marca */
+  --verde:#2E4538;
+  --verde-hondo:#233629;
+  --salvia-os:#6A7E70;
+  --salvia:#C8D2C6;
+  --salvia-velo:#E6EBE3;
+  --arena:#D8CCBE;
+  --arena-velo:#EFE9E1;
+  --crema:#F6F3EE;
+  --blanco:#FFFFFF;
+
+  /* texto y líneas */
+  --tinta:#1F2B25;
+  --tinta-2:#46544B;
+  --tinta-3:#6F7C73;
+  --linea:#DED7CC;
+  --linea-verde:#4A6353;
+  --sobre-verde:#C9D4C8;
+
+  /* tipografía */
+  --titulo:'Fraunces',Georgia,'Times New Roman',serif;
+  --texto:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--crema);color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--verde);outline-offset:3px;border-radius:4px}
+.sobre-verde :focus-visible{outline-color:var(--arena)}
+
+/* Solo los títulos principales van en Fraunces */
+h1,h2{font-family:var(--titulo);font-weight:360;font-variation-settings:"SOFT" 40,"WONK" 0;letter-spacing:-0.018em;line-height:1.08;margin:0;color:var(--verde);text-wrap:balance}
+h3{font-family:var(--texto);font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.005em;margin:0;color:var(--verde)}
+h2{font-size:clamp(30px,3.8vw,46px)}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.nota{font-size:15px;color:var(--tinta-3)}
+.lead{font-size:19px;line-height:1.6;color:var(--tinta-2);max-width:34em}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 28px;border-radius:999px;font-family:var(--texto);font-size:16px;font-weight:600;letter-spacing:.005em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn-verde{background:var(--verde);color:var(--crema)}
+.btn-verde:hover{background:var(--verde-hondo)}
+.btn-borde{border-color:var(--verde);color:var(--verde);background:transparent}
+.btn-borde:hover{background:var(--verde);color:var(--crema)}
+.btn-arena{background:var(--arena);color:var(--verde)}
+.btn-arena:hover{background:#CDBFAE}
+.btn-crema{background:var(--crema);color:var(--verde)}
+.btn-full{width:100%}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-txt{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:26px;line-height:1;letter-spacing:-0.02em}
+.logo-txt .n{font-weight:500;color:var(--verde)}
+.logo-txt .f{font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:.977em;color:var(--salvia-os)}
+.logo-txt .r{font-weight:300;color:var(--salvia-os)}
+.logo small{display:block;font-size:12px;color:var(--tinta-3);margin-top:5px;letter-spacing:.01em}
+.ayuda{font-size:14.5px;color:var(--tinta-3);margin:-2px 0 10px;line-height:1.5}
+.form{display:flex;flex-direction:column;gap:22px}
+.bloque-form{display:flex;flex-direction:column;gap:20px}
+.bloque-form + .bloque-form{padding-top:30px;border-top:1px solid var(--linea)}
+.bloque-form h3{font-size:17px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
+.campo{display:flex;flex-direction:column;gap:8px}
+.campo label,.campo .etq{font-size:15px;font-weight:500;color:var(--tinta-2)}
+.campo input,.campo textarea{width:100%;border:1.5px solid var(--linea);background:var(--crema);border-radius:14px;min-height:52px;padding:12px 16px;font-family:inherit;font-size:16px;color:var(--tinta);transition:border-color .15s,background-color .15s}
+.campo textarea{resize:vertical;min-height:96px}
+.campo input::placeholder,.campo textarea::placeholder{color:#9AA59D}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--verde);background:var(--blanco)}
+.opciones{display:flex;gap:8px;flex-wrap:wrap}
+.opcion{border:1.5px solid var(--linea);border-radius:999px;padding:10px 18px;font-size:15px;font-weight:500;color:var(--tinta-2);cursor:pointer;background:var(--blanco);font-family:inherit;min-height:44px;transition:background-color .15s,border-color .15s,color .15s}
+.opcion:hover{border-color:var(--salvia-os)}
+.opcion[aria-pressed="true"],.opcion:has(input:checked){background:var(--verde);color:var(--crema);border-color:var(--verde)}
+label.opcion{display:inline-flex;align-items:center;position:relative}
+label.opcion input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+label.opcion:has(input:focus-visible){outline:2px solid var(--verde);outline-offset:3px}
+.total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;background:var(--salvia-velo);border-radius:18px;padding:18px 22px}
+.total span{font-size:15px;color:var(--tinta-2)}
+.total small{display:block;font-size:13.5px;color:var(--tinta-3);margin-top:2px}
+.total b{font-size:30px;font-weight:600;letter-spacing:-0.03em;color:var(--verde);white-space:nowrap}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--tinta-3);line-height:1.5}
+.check input{margin-top:2px;width:20px;height:20px;flex:none;accent-color:var(--verde)}
+.aviso-form{display:none;background:var(--salvia-velo);border-radius:14px;padding:14px 18px;font-size:15px;color:var(--tinta-2)}
+.form .pie-form{font-size:14px;color:var(--tinta-3);text-align:center}
+/* página */
+.cab{padding:28px 0 0}
+.hoja{max-width:760px;margin:0 auto;padding:0 22px 72px}
+.intro{margin:40px 0 28px}
+.intro h1{font-size:clamp(34px,6vw,52px);font-weight:340;letter-spacing:-0.025em}
+.intro p{margin-top:16px;color:var(--tinta-2);font-size:18px}
+.datos{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.datos span{background:var(--salvia-velo);color:var(--verde);font-size:14.5px;font-weight:500;padding:6px 14px;border-radius:999px}
+.tarjeta{background:var(--blanco);border-radius:28px;padding:34px 34px 30px}
+.pie{margin-top:28px;text-align:center;font-size:14px;color:var(--tinta-3)}
+.pie a{color:var(--verde);font-weight:600}
+
+/* secciones numeradas */
+.paso{display:flex;align-items:center;gap:12px}
+.paso b{flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--verde);color:var(--crema);font-size:14px;font-weight:600}
+.opc{font-weight:400;color:var(--tinta-3);font-size:14px}
+
+/* escala 0-10 */
+.escala{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px}
+.escala label.opcion{justify-content:center;padding:0;min-height:48px;border-radius:12px;font-size:16px;font-weight:600}
+.extremos{display:flex;justify-content:space-between;font-size:13.5px;color:var(--tinta-3);margin-top:2px}
+
+/* valoraciones 1-5 */
+.valora{display:flex;flex-direction:column;gap:10px;padding:16px 18px;border-radius:18px;background:var(--crema)}
+.valora .que{font-size:15.5px;font-weight:600;color:var(--verde);line-height:1.35}
+.valora .que small{display:block;font-weight:400;color:var(--tinta-3);font-size:13.5px;margin-top:2px}
+.valora .opciones{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.valora label.opcion{justify-content:center;text-align:center;padding:6px 4px;font-size:14px;min-height:42px;border-radius:12px;line-height:1.2}
+.valora label.opcion.na{grid-column:1/-1;min-height:36px}
+.valora label.opcion.na{background:transparent;border-style:dashed;color:var(--tinta-3)}
+.valora label.opcion.na:has(input:checked){background:var(--tinta-3);border-color:var(--tinta-3);border-style:solid;color:var(--blanco)}
+
+/* temas */
+.temas{display:flex;flex-direction:column;gap:10px}
+.temas label{display:flex;gap:12px;align-items:center;font-size:15.5px;color:var(--tinta-2);padding:12px 16px;border:1.5px solid var(--linea);border-radius:14px;cursor:pointer;transition:border-color .15s,background-color .15s}
+.temas label:has(input:checked){border-color:var(--verde);background:var(--salvia-velo);color:var(--verde);font-weight:500}
+.temas input{width:20px;height:20px;flex:none;accent-color:var(--verde)}
+.oculto{display:none}
+.testimonio{display:none;flex-direction:column;gap:20px;padding:18px;border-radius:18px;background:var(--salvia-velo)}
+#formOpinion:has(input[name="publicar"]:checked) .testimonio{display:flex}
+.error{color:#9B3B2E;font-size:14px;margin:4px 0 0}
+@media (max-width:640px){
+  .campos{grid-template-columns:1fr}
+  .tarjeta{padding:26px 20px 24px;border-radius:22px}
+  .intro{margin-top:28px}
+  .escala{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .valora{padding:14px 10px}
+  .valora .que{padding:0 4px}
+  .valora .opciones{gap:4px}
+  .valora label.opcion{font-size:12.5px;padding:4px 2px;min-height:44px}
+}
+</style>
+</head>
+<body>
+<div class="hoja">
+  <header class="cab">
+    <a class="logo" href="/" aria-label="NidoFarma">
+      <svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="58" r="19" fill="#D8CCBE"/><path d="M9 48 A41 41 0 0 0 91 48" fill="none" stroke="#2E4538" stroke-width="11" stroke-linecap="round"/></svg>
+      <span><span class="logo-txt"><span class="n">nido</span><span class="f">f</span><span class="r">arma</span></span><small>Formación para farmacéuticos</small></span>
+    </a>
+  </header>
+
+  <section class="intro">
+    <h1>¿Qué te ha parecido el curso?</h1>
+    <p>Gracias por acompañarnos en la primera edición. Tu opinión nos ayuda a mejorar y a decidir las próximas formaciones. Son 3 minutos y solo hay dos preguntas obligatorias.</p>
+    <div class="datos"><span>Curso de Especialización en Materno Infantil</span><span>20 y 21 de noviembre</span></div>
+  </section>
+
+  <div class="tarjeta">
+  <form class="form" id="formOpinion" name="opinion" method="POST" action="/gracias-opinion.html" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="opinion">
+    <p hidden><label>No rellenar: <input name="bot-field"></label></p>
+
+    <!-- 1. Valoración global -->
+    <div class="bloque-form">
+      <h3 class="paso"><b>1</b>Tu valoración general</h3>
+      <div class="campo">
+        <span class="etq" id="lbl-global">Del 1 al 10, ¿qué nota le pones al curso?</span>
+        <div class="escala" role="radiogroup" aria-labelledby="lbl-global" id="escalaGlobal"><label class="opcion"><input type="radio" name="nota-global" value="1"><span>1</span></label><label class="opcion"><input type="radio" name="nota-global" value="2"><span>2</span></label><label class="opcion"><input type="radio" name="nota-global" value="3"><span>3</span></label><label class="opcion"><input type="radio" name="nota-global" value="4"><span>4</span></label><label class="opcion"><input type="radio" name="nota-global" value="5"><span>5</span></label><label class="opcion"><input type="radio" name="nota-global" value="6"><span>6</span></label><label class="opcion"><input type="radio" name="nota-global" value="7"><span>7</span></label><label class="opcion"><input type="radio" name="nota-global" value="8"><span>8</span></label><label class="opcion"><input type="radio" name="nota-global" value="9"><span>9</span></label><label class="opcion"><input type="radio" name="nota-global" value="10"><span>10</span></label></div>
+        <div class="extremos"><span>1 · Muy flojo</span><span>10 · Excelente</span></div>
+      </div>
+      <div class="campo">
+        <span class="etq" id="lbl-nps">¿Lo recomendarías a un compañero o compañera de farmacia?</span>
+        <div class="escala" role="radiogroup" aria-labelledby="lbl-nps" id="escalaNps"><label class="opcion"><input type="radio" name="recomendaria" value="0"><span>0</span></label><label class="opcion"><input type="radio" name="recomendaria" value="1"><span>1</span></label><label class="opcion"><input type="radio" name="recomendaria" value="2"><span>2</span></label><label class="opcion"><input type="radio" name="recomendaria" value="3"><span>3</span></label><label class="opcion"><input type="radio" name="recomendaria" value="4"><span>4</span></label><label class="opcion"><input type="radio" name="recomendaria" value="5"><span>5</span></label><label class="opcion"><input type="radio" name="recomendaria" value="6"><span>6</span></label><label class="opcion"><input type="radio" name="recomendaria" value="7"><span>7</span></label><label class="opcion"><input type="radio" name="recomendaria" value="8"><span>8</span></label><label class="opcion"><input type="radio" name="recomendaria" value="9"><span>9</span></label><label class="opcion"><input type="radio" name="recomendaria" value="10"><span>10</span></label></div>
+        <div class="extremos"><span>0 · Nada probable</span><span>10 · Seguro que sí</span></div>
+      </div>
+    </div>
+
+    <!-- 2. Sesiones y organización -->
+    <div class="bloque-form">
+      <h3 class="paso"><b>2</b>Las sesiones y la organización</h3>
+      <p class="ayuda" style="margin:-8px 0 0">Marca lo que quieras. Si no asististe a alguna sesión, déjala sin marcar o pulsa «No asistí».</p>
+      <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="valora"><span class="que" id="lbl-v0">Lactancia materna<small>Viernes por la mañana</small></span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v0"><label class="opcion"><input type="radio" name="sesion-lactancia" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="sesion-lactancia" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="sesion-lactancia" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="sesion-lactancia" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="sesion-lactancia" value="Excelente"><span>Excelente</span></label><label class="opcion na"><input type="radio" name="sesion-lactancia" value="No asistí"><span>No asistí</span></label></div></div>
+      <div class="valora"><span class="que" id="lbl-v1">Primeros cuidados del bebé<small>Viernes por la tarde</small></span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v1"><label class="opcion"><input type="radio" name="sesion-primeros-cuidados" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="sesion-primeros-cuidados" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="sesion-primeros-cuidados" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="sesion-primeros-cuidados" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="sesion-primeros-cuidados" value="Excelente"><span>Excelente</span></label><label class="opcion na"><input type="radio" name="sesion-primeros-cuidados" value="No asistí"><span>No asistí</span></label></div></div>
+      <div class="valora"><span class="que" id="lbl-v2">Leches de fórmula<small>Sábado por la mañana</small></span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v2"><label class="opcion"><input type="radio" name="sesion-leches-formula" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="sesion-leches-formula" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="sesion-leches-formula" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="sesion-leches-formula" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="sesion-leches-formula" value="Excelente"><span>Excelente</span></label><label class="opcion na"><input type="radio" name="sesion-leches-formula" value="No asistí"><span>No asistí</span></label></div></div>
+      <div class="valora"><span class="que" id="lbl-v3">Las ponentes<small>Claridad, cercanía y dominio del tema</small></span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v3"><label class="opcion"><input type="radio" name="ponentes" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="ponentes" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="ponentes" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="ponentes" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="ponentes" value="Excelente"><span>Excelente</span></label></div></div>
+      <div class="valora"><span class="que" id="lbl-v4">Material y documentación</span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v4"><label class="opcion"><input type="radio" name="material" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="material" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="material" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="material" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="material" value="Excelente"><span>Excelente</span></label></div></div>
+      <div class="valora"><span class="que" id="lbl-v5">Sede y horarios</span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v5"><label class="opcion"><input type="radio" name="sede-horarios" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="sede-horarios" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="sede-horarios" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="sede-horarios" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="sede-horarios" value="Excelente"><span>Excelente</span></label></div></div>
+      <div class="valora"><span class="que" id="lbl-v6">Comida networking del viernes</span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v6"><label class="opcion"><input type="radio" name="comida-networking" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="comida-networking" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="comida-networking" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="comida-networking" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="comida-networking" value="Excelente"><span>Excelente</span></label><label class="opcion na"><input type="radio" name="comida-networking" value="No asistí"><span>No asistí</span></label></div></div>
+      <div class="valora"><span class="que" id="lbl-v7">Relación calidad / precio</span><div class="opciones" role="radiogroup" aria-labelledby="lbl-v7"><label class="opcion"><input type="radio" name="calidad-precio" value="Flojo"><span>Flojo</span></label><label class="opcion"><input type="radio" name="calidad-precio" value="Regular"><span>Regular</span></label><label class="opcion"><input type="radio" name="calidad-precio" value="Bien"><span>Bien</span></label><label class="opcion"><input type="radio" name="calidad-precio" value="Muy bien"><span>Muy bien</span></label><label class="opcion"><input type="radio" name="calidad-precio" value="Excelente"><span>Excelente</span></label></div></div>
+      </div>
+    </div>
+
+    <!-- 3. Comentarios -->
+    <div class="bloque-form">
+      <h3 class="paso"><b>3</b>Cuéntanos <span class="opc">(opcional)</span></h3>
+      <div class="campo"><label for="o-util">¿Qué es lo que más te ha servido para tu día a día en la farmacia?</label><textarea id="o-util" name="lo-mas-util" rows="3"></textarea></div>
+      <div class="campo"><label for="o-mejorar">¿Qué mejorarías?</label><textarea id="o-mejorar" name="que-mejorarias" rows="3" placeholder="Contenido, horarios, sede, materiales…"></textarea></div>
+      <div class="campo">
+        <span class="etq">¿Sobre qué temas te gustaría que hiciéramos el próximo curso?</span>
+        <p class="ayuda">Puedes marcar varios.</p>
+        <div class="temas">
+          <label><input type="checkbox" name="proximos-temas" value="Fertilidad y salud reproductiva"> Fertilidad y salud reproductiva</label>
+          <label><input type="checkbox" name="proximos-temas" value="Salud hormonal y menopausia"> Salud hormonal y menopausia</label>
+          <label><input type="checkbox" name="proximos-temas" value="Test clínicos y suplementación"> Test clínicos y suplementación en la farmacia</label>
+        </div>
+        <input name="otros-temas" type="text" placeholder="¿Otro tema? Escríbelo aquí" aria-label="Otro tema" style="margin-top:4px">
+      </div>
+    </div>
+
+    <!-- 4. Testimonio y datos -->
+    <div class="bloque-form">
+      <h3 class="paso"><b>4</b>Para terminar <span class="opc">(opcional)</span></h3>
+      <label class="check"><input type="checkbox" name="publicar" value="Sí, autorizo publicar mi opinión"> <span style="color:var(--tinta-2);font-size:15px">Me gustaría dejar una frase sobre el curso y <strong>autorizo a NidoFarma a publicarla</strong> en su web y redes junto a mi nombre y mi farmacia.</span></label>
+      <div class="testimonio">
+        <div class="campo"><label for="o-frase">Tu frase sobre el curso</label><textarea id="o-frase" name="testimonio" rows="3" placeholder="En pocas palabras, ¿qué dirías del curso a otro farmacéutico?"></textarea></div>
+        <div class="campos">
+          <div class="campo"><label for="o-nombre">Nombre y apellidos</label><input id="o-nombre" name="nombre" type="text" autocomplete="name"></div>
+          <div class="campo"><label for="o-farmacia">Farmacia</label><input id="o-farmacia" name="farmacia" type="text"></div>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="o-email">Tu email <span class="opc">· si quieres que te avisemos de los próximos cursos</span></label>
+        <input id="o-email" name="email" type="email" autocomplete="email">
+      </div>
+      <label class="check oculto" id="checkPriv"><input type="checkbox" name="privacidad"> <span>Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>. Finalidad: valorar el curso, publicar el testimonio si lo autorizas y avisarte de próximas formaciones.</span></label>
+    </div>
+
+    <p class="aviso-form" id="avisoForm"></p>
+    <button class="btn btn-verde btn-full" type="submit">Enviar mi opinión</button>
+    <p class="pie-form">Si no nos dejas tus datos, tu opinión es anónima.</p>
+  </form>
+  </div>
+  <p class="pie">¿Prefieres contárnoslo directamente? Escríbenos a <a href="mailto:info@nidofarma.es">info@nidofarma.es</a></p>
+</div>
+<script>
+(function(){
+  var f=document.getElementById('formOpinion'); if(!f) return;
+
+  // Privacidad solo si deja datos personales
+  var priv=document.getElementById('checkPriv'), privIn=priv.querySelector('input');
+  var pub=f.querySelector('input[name="publicar"]');
+  function sync(){
+    var datos=pub.checked || f.email.value.trim()!=='' || f.nombre.value.trim()!=='';
+    priv.classList.toggle('oculto',!datos); privIn.required=datos;
+    f.nombre.required=pub.checked; f.farmacia.required=pub.checked; f.testimonio.required=pub.checked;
+  }
+  f.addEventListener('input',sync); f.addEventListener('change',sync); sync();
+
+  // Aviso amable si falta una de las dos notas obligatorias
+  f.addEventListener('submit',function(e){
+    var falta=!f.querySelector('input[name="nota-global"]:checked')?'escalaGlobal':(!f.querySelector('input[name="recomendaria"]:checked')?'escalaNps':null);
+    if(falta){
+      e.preventDefault();
+      var a=document.getElementById('avisoForm');
+      a.textContent='Solo nos falta tu nota en la sección 1 (las dos primeras preguntas).';
+      a.style.display='block';
+      document.getElementById(falta).scrollIntoView({behavior:'smooth',block:'center'});
+    }
+  },true);
+})();
+</script>
+</body>
+</html>
